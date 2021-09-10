@@ -1,0 +1,4 @@
+.idea/
+.docker/db/mysql/data/
+.docker/db/mysql/logs/
+.env
