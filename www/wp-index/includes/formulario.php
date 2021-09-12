@@ -8,7 +8,7 @@
 
   <h2 class="mt-3"><?=TITLE?></h2>
 
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
 
     <div class="form-group">
       <label>Título</label>
@@ -22,7 +22,7 @@
 
       <div class="form-group">
           <label>Inserir Imagem</label>
-          <input class="form-control" type="file" value="" name="arquivo[]" id="arquivo" accept="image/*">
+          <input class="form-control" type="file" value="" name="imagem" id="imagem" accept="image/*">
       </div>
 
     <div class="form-group">

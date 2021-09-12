@@ -1,3 +1,29 @@
+<?php
+
+
+$resultados = '';
+foreach($produtos as $produto){
+    $resultados .= '<tr>
+                      <td>
+                        <img width=150 src="'.$produto->imagem.'" alt="" />
+                      </td>
+                      <td>'.$produto->titulo.'</td>
+                      <td>
+                        <a href="visualizar.php?id='.$produto->id.'">
+                          <button type="button" class="btn btn-primary">Ver mais</button>
+                        </a>
+                      </td>
+                    </tr>';
+}
+
+$resultados = strlen($resultados) ? $resultados : '<tr>
+                                                       <td colspan="6" class="text-center">
+                                                              Nenhum produto encontrado
+                                                       </td>
+                                                    </tr>';
+
+?>
+
 <main>
 
   <section>
@@ -13,19 +39,11 @@
           <tr>
             <th>Imagem</th>
             <th>Titulo</th>
-            <th>Status</th>
-            <th>Data</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+            <?=$resultados?>
         </tbody>
     </table>
 
