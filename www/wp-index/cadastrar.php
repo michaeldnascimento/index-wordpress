@@ -4,28 +4,26 @@ require __DIR__.'/vendor/autoload.php';
 
 const TITLE = 'Cadastrar Produto';
 
-use \App\Entity\Produtos;
-use \App\Utils\Anexo;
-$obProduto = new Produtos();
+use \App\Entity\Products;
+use \App\Utils\Attachment;
+$obProduto = new Products();
 
 //VALIDAÇÃO DO POST
-if(isset($_POST['titulo'],$_FILES['imagem'],$_POST['descricao'],$_POST['ativo'])){
+if(isset($_POST['titulo'],$_FILES['imagem'])){
 
     //SALVA A IMAGEM DO ANEXO
-    $anexo = new Anexo();
-    $resultAnexo = $anexo->saveAnexo($_FILES['imagem']);
+    $attachment = new Attachment();
+    $resultAttachment = $attachment->saveAttachment($_FILES['imagem']);
 
     $obProduto->titulo    = $_POST['titulo'];
-    $obProduto->descricao = $_POST['descricao'];
-    $obProduto->imagem    = $resultAnexo;
-    $obProduto->ativo     = $_POST['ativo'];
-    $obProduto->cadastrar();
+    $obProduto->imagem    = $resultAttachment;
+    $obProduto->register();
 
     header('location: index.php?status=success');
     exit;
 }
 
 
-include __DIR__.'/includes/header.php';
-include __DIR__.'/includes/formulario.php';
-include __DIR__.'/includes/footer.php';
+include __DIR__ . '/resources/view/header.php';
+include __DIR__ . '/resources/view/pages/product/formulario.php';
+include __DIR__ . '/resources/view/footer.php';

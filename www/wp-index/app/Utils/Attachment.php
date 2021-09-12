@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-class Anexo {
+class Attachment {
 
     /**
      * Substitui caracteres não-ASCII.
@@ -207,21 +207,21 @@ class Anexo {
      * @param array $arquivo
      * @return string
      */
-    public static function saveAnexo(array $arquivo): string
+    public static function saveAttachment(array $arquivo): string
     {
 
             //RENOMEIA O NOME DO ANEXO
-            $nomeAlt = self::t5f_sanitize_filename($arquivo['name']);
-            $anexoUp = "/var/www/html/wp-index/img/" . $nomeAlt;
+            $name = self::t5f_sanitize_filename($arquivo['name']);
+            $upName = "/var/www/html/wp-index/resources/img/" . $name;
 
             //UPLOAD ARQUIVO
-            move_uploaded_file($arquivo['tmp_name'], $anexoUp);
+            move_uploaded_file($arquivo['tmp_name'], $upName);
 
             //GERANDO O CAMINHO NO BANCO
-            $anexoBD = "/wp-index/img/" . $nomeAlt . ",";
+            $nameDB = "/wp-index/resources/img/" . $name . ",";
 
         /** RETIRA O ÚLTIMO "," DO TEXTO E RETORNA O DADOS */
-        return substr($anexoBD, 0, -1);
+        return substr($nameDB, 0, -1);
 
     }
 }

@@ -5,7 +5,7 @@ namespace App\Entity;
 use \App\Db\Database;
 use \PDO;
 
-class Produtos{
+class Products{
 
     /**
     * Identificador único do produto
@@ -20,22 +20,10 @@ class Produtos{
     public string $titulo;
 
     /**
-    * Descrição do produto (pode conter html)
-    * @var string
-    */
-    public string $descricao;
-
-    /**
      * Caminho da imagem
      * @var string
      */
     public string $imagem;
-
-    /**
-    * Define se o produto está ativo
-    * @var string(s/n)
-    */
-    public string $ativo;
 
     /**
     * Data de publicação do produto
@@ -47,17 +35,16 @@ class Produtos{
    * Método responsável por cadastrar o produto no banco
    * @return boolean
    */
-  public function cadastrar(){
+  public function register(): bool
+  {
     //DEFINIR A DATA
     $this->data = date('Y-m-d H:i:s');
 
-    //INSERIR A VAGA NO BANCO
+    //INSERIR PRODUTO NO BANCO
     $obDatabase = new Database('produtos');
     $this->id = $obDatabase->insert([
                                       'titulo'    => $this->titulo,
-                                      'descricao' => $this->descricao,
                                       'imagem'    => $this->imagem,
-                                      'ativo'     => $this->ativo,
                                       'data'      => $this->data
                                     ]);
 
@@ -73,7 +60,7 @@ class Produtos{
    * @param string|null $limit
    * @return array
    */
-  public static function getProdutos(string $where = null, string $order = null, string $limit = null){
+  public static function getProducts(string $where = null, string $order = null, string $limit = null){
     return (new Database('produtos'))->select($where,$order,$limit)
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   }
@@ -81,9 +68,9 @@ class Produtos{
   /**
    * Método responsável por buscar um produto com base em seu ID
    * @param integer $id
-   * @return Produtos
+   * @return Products
    */
-  public static function getProduto(int $id){
+  public static function getProduct(int $id){
     return (new Database('produtos'))->select('id = '.$id)
                                   ->fetchObject(self::class);
   }
@@ -92,12 +79,10 @@ class Produtos{
      * Método responsável por atualizar o produto no banco
      * @return boolean
      */
-    public function atualizar(){
+    public function update(){
         return (new Database('produtos'))->update('id = '.$this->id,[
             'titulo'    => $this->titulo,
-            'descricao' => $this->descricao,
             'imagem'    => $this->imagem,
-            'ativo'     => $this->ativo,
             'data'      => $this->data
         ]);
     }
@@ -106,7 +91,7 @@ class Produtos{
      * Método responsável por excluir a vaga do banco
      * @return boolean
      */
-    public function excluir(){
+    public function delete(){
         return (new Database('produtos'))->delete('id = '.$this->id);
     }
 

@@ -4,8 +4,8 @@ require __DIR__.'/vendor/autoload.php';
 
 const TITLE = 'Editar produto';
 
-use \App\Entity\Produtos;
-use \App\Utils\Anexo;
+use \App\Entity\Products;
+use \App\Utils\Attachment;
 
 //VALIDAÇÃO DO ID
 if(!isset($_GET['id']) or !is_numeric($_GET['id'])){
@@ -14,32 +14,30 @@ if(!isset($_GET['id']) or !is_numeric($_GET['id'])){
 }
 
 //CONSULTA PRODUTO
-$obProdutos = Produtos::getProduto($_GET['id']);
+$obProduct = Products::getProduct($_GET['id']);
 
 
 //VALIDAÇÃO DA VAGA
-if(!$obProdutos instanceof Produtos){
+if(!$obProduct instanceof Products){
   header('location: index.php?status=error');
   exit;
 }
 
 //VALIDAÇÃO DO POST
-if(isset($_POST['titulo'],$_FILES['imagem'],$_POST['descricao'],$_POST['ativo'])){
+if(isset($_POST['titulo'],$_FILES['imagem'])){
 
     //SALVA A IMAGEM DO ANEXO
-    $anexo = new Anexo();
-    $resultAnexo = $anexo->saveAnexo($_FILES['imagem']);
+    $attachment = new Attachment();
+    $resultAttachment = $attachment->saveAttachment($_FILES['imagem']);
 
-    $obProdutos->titulo    = $_POST['titulo'];
-    $obProdutos->descricao = $_POST['descricao'];
-    $obProdutos->imagem    = $resultAnexo;
-    $obProdutos->ativo     = $_POST['ativo'];
-    $obProdutos->atualizar();
+    $obProduct->titulo    = $_POST['titulo'];
+    $obProduct->imagem    = $resultAttachment;
+    $obProduct->update();
 
   header('location: index.php?status=success');
   exit;
 }
 
-include __DIR__.'/includes/header.php';
-include __DIR__.'/includes/formulario.php';
-include __DIR__.'/includes/footer.php';
+include __DIR__ . '/resources/view/header.php';
+include __DIR__ . '/resources/view/pages/product/formulario.php';
+include __DIR__ . '/resources/view/footer.php';

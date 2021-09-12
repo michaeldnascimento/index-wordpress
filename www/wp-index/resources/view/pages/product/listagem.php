@@ -1,28 +1,28 @@
 <?php
 
 
-$resultados = '';
-foreach($produtos as $produto){
-    $resultados .= '<tr>
+$result = '';
+foreach($products as $product){
+    $result .= '<tr>
                       <td>
-                        <img width=100 src="'.$produto->imagem.'" alt="" />
+                        <img width=100 src="'.$product->imagem.'" alt="" />
                       </td>
-                      <td>'.$produto->titulo.'</td>
+                      <td>'.$product->titulo.'</td>
                       <td>
-                        <a href="ver.php?id='.$produto->id.'">
+                        <a href="ver.php?id='.$product->id.'">
                           <button type="button" class="btn btn-primary">Ver mais</button>
                         </a>
-                        <a href="editar.php?id='.$produto->id.'">
+                        <a href="editar.php?id='.$product->id.'">
                           <button type="button" class="btn btn-success">Editar</button>
                         </a>
-                        <a href="excluir.php?id='.$produto->id.'">
+                        <a href="excluir.php?id='.$product->id.'">
                           <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
                       </td>
                     </tr>';
 }
 
-$resultados = strlen($resultados) ? $resultados : '<tr>
+$result = strlen($result) ? $result : '<tr>
                                                        <td colspan="6" class="text-center">
                                                               Nenhum produto encontrado
                                                        </td>
@@ -49,7 +49,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
           </tr>
         </thead>
         <tbody>
-            <?=$resultados?>
+            <?=$result?>
         </tbody>
     </table>
 

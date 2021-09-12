@@ -2,10 +2,10 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use \App\Entity\Produtos;
+use \App\Entity\Products;
 
-$produtos = Produtos::getProdutos();
+$products = Products::getProducts();
 
-include __DIR__.'/includes/header.php';
-include __DIR__.'/includes/listagem.php';
-include __DIR__.'/includes/footer.php';
+include __DIR__ . '/resources/view/header.php';
+include __DIR__ . '/resources/view/pages/product/listagem.php';
+include __DIR__ . '/resources/view/footer.php';
