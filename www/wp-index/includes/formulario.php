@@ -12,12 +12,12 @@
 
     <div class="form-group">
       <label>Título</label>
-      <input type="text" class="form-control" name="titulo" value="">
+      <input type="text" class="form-control" name="titulo" value="<?=$obProdutos->titulo?>">
     </div>
 
     <div class="form-group">
       <label>Descrição</label>
-      <textarea class="form-control" name="descricao" rows="5"></textarea>
+      <textarea class="form-control" name="descricao" rows="3"><?=$obProdutos->descricao?></textarea>
     </div>
 
       <div class="form-group">
@@ -37,7 +37,7 @@
 
           <div class="form-check form-check-inline">
             <label class="form-control">
-              <input type="radio" name="ativo" value="n"> Inativo
+              <input type="radio" name="ativo" value="n"<?=$obProdutos->ativo == 'n' ? 'checked' : ''?>> Inativo
             </label>
           </div>
       </div>

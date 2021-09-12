@@ -2,7 +2,7 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-define('TITLE','Cadastrar Produto');
+const TITLE = 'Cadastrar Produto';
 
 use \App\Entity\Produtos;
 use \App\Utils\Anexo;
@@ -11,13 +11,9 @@ $obProduto = new Produtos();
 //VALIDAÇÃO DO POST
 if(isset($_POST['titulo'],$_FILES['imagem'],$_POST['descricao'],$_POST['ativo'])){
 
-
+    //SALVA A IMAGEM DO ANEXO
     $anexo = new Anexo();
     $resultAnexo = $anexo->saveAnexo($_FILES['imagem']);
-
-    //echo "<pre>";
-    //print_r($resultAnexo);
-    //exit;
 
     $obProduto->titulo    = $_POST['titulo'];
     $obProduto->descricao = $_POST['descricao'];

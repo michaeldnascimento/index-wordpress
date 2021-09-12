@@ -88,4 +88,26 @@ class Produtos{
                                   ->fetchObject(self::class);
   }
 
+    /**
+     * Método responsável por atualizar o produto no banco
+     * @return boolean
+     */
+    public function atualizar(){
+        return (new Database('produtos'))->update('id = '.$this->id,[
+            'titulo'    => $this->titulo,
+            'descricao' => $this->descricao,
+            'imagem'    => $this->imagem,
+            'ativo'     => $this->ativo,
+            'data'      => $this->data
+        ]);
+    }
+
+    /**
+     * Método responsável por excluir a vaga do banco
+     * @return boolean
+     */
+    public function excluir(){
+        return (new Database('produtos'))->delete('id = '.$this->id);
+    }
+
 }

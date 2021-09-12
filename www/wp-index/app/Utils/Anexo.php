@@ -210,21 +210,18 @@ class Anexo {
     public static function saveAnexo(array $arquivo): string
     {
 
-        $myAnexoStr = '';
-
             //RENOMEIA O NOME DO ANEXO
             $nomeAlt = self::t5f_sanitize_filename($arquivo['name']);
-            $anexoUp = "/wp-index/img/" . $nomeAlt;
+            $anexoUp = "/var/www/html/wp-index/img/" . $nomeAlt;
 
             //UPLOAD ARQUIVO
             move_uploaded_file($arquivo['tmp_name'], $anexoUp);
 
             //GERANDO O CAMINHO NO BANCO
             $anexoBD = "/wp-index/img/" . $nomeAlt . ",";
-            $myAnexoStr .= $anexoBD;
 
         /** RETIRA O ÚLTIMO "," DO TEXTO E RETORNA O DADOS */
-        return substr($myAnexoStr, 0, -1);
+        return substr($anexoBD, 0, -1);
 
     }
 }

@@ -5,12 +5,18 @@ $resultados = '';
 foreach($produtos as $produto){
     $resultados .= '<tr>
                       <td>
-                        <img width=150 src="'.$produto->imagem.'" alt="" />
+                        <img width=100 src="'.$produto->imagem.'" alt="" />
                       </td>
                       <td>'.$produto->titulo.'</td>
                       <td>
-                        <a href="visualizar.php?id='.$produto->id.'">
+                        <a href="ver.php?id='.$produto->id.'">
                           <button type="button" class="btn btn-primary">Ver mais</button>
+                        </a>
+                        <a href="editar.php?id='.$produto->id.'">
+                          <button type="button" class="btn btn-success">Editar</button>
+                        </a>
+                        <a href="excluir.php?id='.$produto->id.'">
+                          <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
                       </td>
                     </tr>';
