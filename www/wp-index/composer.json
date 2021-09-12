@@ -1,0 +1,8 @@
+{
+  "name": "wp-index/index",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
