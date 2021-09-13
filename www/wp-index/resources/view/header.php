@@ -13,8 +13,11 @@
 
     <div class="container">
 
-      <div class="jumbotron bg-danger">
-        <h1>Produtos</h1>
-      </div>
+        <nav class="navbar navbar-light bg-danger">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Index</span>
+            </div>
+        </nav>
+        <br/>
 
 
