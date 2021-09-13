@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-group">
-            <img class="img-fluid" src="<?=$obProduct->imagem?>" alt="" />
+            <img width=300 class="img-fluid" src="<?=$obProduct->imagem?>" alt="" />
         </div>
 
 </main>

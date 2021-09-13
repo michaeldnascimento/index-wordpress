@@ -19,4 +19,6 @@ Rebuild Server
 
 phpmyadmin - user: index / password: index2021 / index2021
 
+wordpress - user: index / password: index2021
+
 ---

@@ -24,7 +24,7 @@ if(!$obProduct instanceof Products){
 }
 
 //CONSULTA COMENTÁRIOS
-$comments = Comments::getComments($_GET['id']);
+$comments = Comments::getComment($_GET['id']);
 
 
 //VALIDAÇÃO DO POST
